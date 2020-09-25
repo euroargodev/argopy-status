@@ -56,3 +56,13 @@ jobs:
         add: "*.json --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Save report online
+      uses: EndBug/add-and-commit@v4.4.0
+      with:
+        author_name: G. Maze
+        author_email: gmaze@ifremer.fr
+        message: "Update report file"
+        add: "*.txt --force"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
