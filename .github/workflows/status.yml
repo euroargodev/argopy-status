@@ -33,9 +33,20 @@ jobs:
         python -m pip install --upgrade pip
         pwd
         ls -l
+        pip install distributed
         pip install git+https://github.com/euroargodev/argopy.git@api-status
 
-    - name: Check and save API status
+    - name: Check API status
       run: |
         python -c "import argopy; argopy.utilities.save_api_status('.')"
         ls -rtl
+
+    - name: Save API status online
+      uses: EndBug/add-and-commit@v5
+      with:
+        author_name: G. Maze
+        author_email: gmaze@ifremer.fr
+        message: "Update status files"
+        add: "*.json"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
