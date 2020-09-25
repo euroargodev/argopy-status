@@ -25,6 +25,7 @@ def save_api_status(out_dir: str = '.'):
                 flist.append(outfile)
             with open(api.upper(), 'w') as f:
                 f.write(status.upper())
+            os.environ[api.upper()] = status.upper()
     return flist
 
 if __name__ == '__main__':
