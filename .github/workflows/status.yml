@@ -25,7 +25,7 @@ jobs:
         
     - uses: actions/checkout@v2
     - name: Save report
-      run: date +%s > report.txt
+      run: date +%s > last_update.txt
       
     - name: Set up Python 3.6
       uses: actions/setup-python@v1
@@ -55,9 +55,9 @@ jobs:
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
       with:
-        author_name: G. Maze
+        author_name: argo-bot
         author_email: gmaze@ifremer.fr
-        message: "Update status files by $$commit_name"
+        message: "Update status files"
         add: "*.json --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -65,9 +65,9 @@ jobs:
     - name: Save report online
       uses: EndBug/add-and-commit@v4.4.0
       with:
-        author_name: G. Maze
+        author_name: argo-bot
         author_email: gmaze@ifremer.fr
-        message: 'Update report file by ${GITHUB_RUN_ID}'
+        message: 'Update report file'
         add: "*.txt --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
