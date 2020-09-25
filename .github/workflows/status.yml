@@ -68,14 +68,19 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Send mail
+    - name: Setenv with results
+      env:
+        ERDDAP: ${{ cat ERDDAP }}
+        ARGOVIS: ${{ cat ARGOVIS }}
+
+    - name: Send ARGOVIS status by email
       uses: dawidd6/action-send-mail@v2
       with:
         server_address: smtp.gmail.com
         server_port: 587
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
-        subject: DOWN
+        subject: ${{ARGOVIS}}
         body: Build job of ${{github.repository}} completed successfully!
         to: component+d3e20501-d0d9-49d1-ab02-6c66636e9aaf@notifications.statuspage.io
         from: argo-bot

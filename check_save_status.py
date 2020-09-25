@@ -23,6 +23,8 @@ def save_api_status(out_dir: str = '.'):
             with open(outfile, 'w') as f:
                 json.dump(data, f)
                 flist.append(outfile)
+            with open(api.upper(), 'w') as f:
+                f.write(status.upper())
     return flist
 
 if __name__ == '__main__':
