@@ -50,7 +50,7 @@ jobs:
         echo "::set-env name=ARGOVIS::$(cat ARGOVIS)"
 
     - name: toto
-      run: echo "$ARGOVIS"
+      run: echo "Hello World, argovis status is $ARGOVIS"
 
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
