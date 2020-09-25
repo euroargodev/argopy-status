@@ -47,12 +47,17 @@ jobs:
         more argopy_api_status_erddap.json
         more argopy_api_status_argovis.json
 
+    - name: Hello world
+      run: echo Hello world $FIRST_NAME $middle_name $Last_Name!
+      env:
+        commit_name: $GITHUB_RUN_ID
+
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
       with:
         author_name: G. Maze
         author_email: gmaze@ifremer.fr
-        message: "Update status files by $GITHUB_RUN_ID"
+        message: "Update status files by $commit_name"
         add: "*.json --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +67,7 @@ jobs:
       with:
         author_name: G. Maze
         author_email: gmaze@ifremer.fr
-        message: "Update report file by $GITHUB_RUN_ID"
+        message: "Update report file by ${GITHUB_RUN_ID}"
         add: "*.txt --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
