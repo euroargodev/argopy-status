@@ -42,7 +42,7 @@ jobs:
         ls -rtl
 
     - name: Save API status online
-      uses: EndBug/add-and-commit@v5
+      uses: EndBug/add-and-commit@v4.4.0
       with:
         author_name: G. Maze
         author_email: gmaze@ifremer.fr
