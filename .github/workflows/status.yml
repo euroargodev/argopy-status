@@ -79,7 +79,7 @@ jobs:
         server_port: 587
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
-        subject: $(cat ARGOVIS)
+        subject: env.ARGOVIS
         body: Build job of ${{github.repository}} completed successfully!
         to: component+d3e20501-d0d9-49d1-ab02-6c66636e9aaf@notifications.statuspage.io
         from: argo-bot
