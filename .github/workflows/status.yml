@@ -52,7 +52,7 @@ jobs:
       with:
         author_name: G. Maze
         author_email: gmaze@ifremer.fr
-        message: "Update status files"
+        message: "Update status files by $GITHUB_RUN_ID"
         add: "*.json --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ jobs:
       with:
         author_name: G. Maze
         author_email: gmaze@ifremer.fr
-        message: "Update report file"
+        message: "Update report file by $GITHUB_RUN_ID"
         add: "*.txt --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
