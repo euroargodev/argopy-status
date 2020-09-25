@@ -49,8 +49,6 @@ jobs:
         more argopy_api_status_argovis.json
         echo $ERDDAP
         echo $ARGOVIS
-      env:
-        ARGOVIS: ${{ ARGOVIS }}
 
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
