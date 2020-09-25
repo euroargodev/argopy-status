@@ -31,8 +31,8 @@ jobs:
         python -m pip install --upgrade pip
         pwd
         ls -l
-        pip install distributed
-        pip install git+https://github.com/euroargodev/argopy.git@api-status
+        pip install --use-feature=2020-resolver distributed
+        pip install --use-feature=2020-resolver git+https://github.com/euroargodev/argopy.git@api-status
 
     - name: Check API status
       run: |
@@ -47,6 +47,6 @@ jobs:
         author_name: G. Maze
         author_email: gmaze@ifremer.fr
         message: "Update status files"
-        add: "*.json"
+        add: "*.json --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
