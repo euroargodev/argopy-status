@@ -38,11 +38,12 @@ jobs:
         pwd
         ls -l
         pip install --use-feature=2020-resolver distributed
-        pip install --use-feature=2020-resolver git+https://github.com/euroargodev/argopy.git@api-status
+        pip install --use-feature=2020-resolver git+https://github.com/euroargodev/argopy.git@master
 
     - name: Check API status
       run: |
-        python -c "import argopy; argopy.utilities.save_api_status('.')"
+#        python -c "import argopy; argopy.utilities.save_api_status('.')"
+        python check_save_status.py
         ls -rtl
         more argopy_api_status_erddap.json
         more argopy_api_status_argovis.json
