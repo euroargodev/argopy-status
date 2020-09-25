@@ -47,6 +47,9 @@ jobs:
         ls -rtl
         more argopy_api_status_erddap.json
         more argopy_api_status_argovis.json
+      env:
+        ERDDAP: ${{ cat ERDDAP }}
+        ARGOVIS: ${{ cat ARGOVIS }}
 
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
@@ -67,11 +70,6 @@ jobs:
         add: "*.txt --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Setenv with results
-      env:
-        ERDDAP: ${{ cat ERDDAP }}
-        ARGOVIS: ${{ cat ARGOVIS }}
 
     - name: Send ARGOVIS status by email
       uses: dawidd6/action-send-mail@v2
