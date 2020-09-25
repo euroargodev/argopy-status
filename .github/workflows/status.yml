@@ -47,7 +47,9 @@ jobs:
         ls -rtl
         more argopy_api_status_erddap.json
         more argopy_api_status_argovis.json
-        echo "::set-env name=ARGOVIS::$(cat ARGOVIS)"
+        echo "::set-env name=ARGOVISenv::$(cat ARGOVIS)"
+      env:
+        ARGOVIS: ARGOVISenv
 
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
