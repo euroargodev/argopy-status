@@ -44,15 +44,8 @@ jobs:
     - name: Check API status
       run: |
         python check_save_status.py
-        ls -rtl
-        echo $(cat argopy_api_status_erddap.json)
-        more $(cat argopy_api_status_argovis.json)
-        echo ""
         echo ::set-env name=ARGOVIS::$(cat ARGOVIS)
-#        echo $ARGOVIS
-
-#    - name: toto
-#      run: echo Hello World, argovis status is $ARGOVIS or ${ARGOVIS} or ${{env.ARGOVIS}} or $(cat ARGOVIS)
+        echo ::set-env name=ERDDAP::$(cat ERDDAP)
 
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
@@ -74,6 +67,19 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Send ERDDAP status by email
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: ${{secrets.MAIL_USERNAME}}
+        password: ${{secrets.MAIL_PASSWORD}}
+        subject: ${{env.ERDDAP}}
+        body: Build job of ${{github.repository}} completed successfully!
+        to: ${{secrets.STATUSPAGE_ERDDAP_EMAIL}}
+        from: argo-bot
+        content_type: text/html
+
     - name: Send ARGOVIS status by email
       uses: dawidd6/action-send-mail@v2
       with:
@@ -83,6 +89,6 @@ jobs:
         password: ${{secrets.MAIL_PASSWORD}}
         subject: ${{env.ARGOVIS}}
         body: Build job of ${{github.repository}} completed successfully!
-        to: component+d3e20501-d0d9-49d1-ab02-6c66636e9aaf@notifications.statuspage.io
+        to: ${{secrets.STATUSPAGE_ARGOVIS_EMAIL}}
         from: argo-bot
         content_type: text/html
