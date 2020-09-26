@@ -47,7 +47,7 @@ jobs:
         ls -rtl
         more argopy_api_status_erddap.json
         more argopy_api_status_argovis.json
-        echo "::set-env name=ARGOVIS::$(cat ARGOVIS)"
+        echo ::set-env name=ARGOVIS::$(cat ARGOVIS)
 
     - name: toto
       run: echo "Hello World, argovis status is $ARGOVIS or ${ARGOVIS} or ${{env.ARGOVIS}}"
