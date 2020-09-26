@@ -45,14 +45,14 @@ jobs:
       run: |
         python check_save_status.py
         ls -rtl
-        more argopy_api_status_erddap.json
-        more argopy_api_status_argovis.json
+        echo $(cat argopy_api_status_erddap.json)
+        more $(cat argopy_api_status_argovis.json)
         echo ""
         echo ::set-env name=ARGOVIS::$(cat ARGOVIS)
-        echo $ARGOVIS
+#        echo $ARGOVIS
 
-    - name: toto
-      run: echo Hello World, argovis status is $ARGOVIS or ${ARGOVIS} or ${{env.ARGOVIS}} or $(cat ARGOVIS)
+#    - name: toto
+#      run: echo Hello World, argovis status is $ARGOVIS or ${ARGOVIS} or ${{env.ARGOVIS}} or $(cat ARGOVIS)
 
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
