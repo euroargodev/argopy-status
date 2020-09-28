@@ -1,5 +1,4 @@
 # This workflow determines the status of web API used by argopy, every 5 minutes
-#        python -c "import argopy; argopy.utilities.save_api_status('.')"
 
 name: api-status
 
