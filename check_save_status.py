@@ -8,7 +8,7 @@ def save_api_status(out_dir: str = '.'):
     flist = []
     for api, mod in list_available_data_src().items():
         if hasattr(mod, 'api_server_check'):
-            label = "API status: %s" % api
+            label = "Data source '%s'" % api
             status = 'down'
             if isAPIconnected(src=api, data=1):
                 status = 'up'
