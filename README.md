@@ -2,14 +2,17 @@
 
 # Argopy online resource status
 
-![Erddap status](https://img.shields.io/endpoint?label=erddap&style=for-the-badge&url=https://raw.githubusercontent.com/euroargodev/argopy-status/master/argopy_api_status_erddap.json)
-![Argovis status](https://img.shields.io/endpoint?label=argovis&style=for-the-badge&url=https://raw.githubusercontent.com/euroargodev/argopy-status/master/argopy_api_status_argovis.json)
+[![Erddap](https://img.shields.io/endpoint?label=src%3D%27erddap%27&style=for-the-badge&url=https://raw.githubusercontent.com/euroargodev/argopy-status/master/argopy_api_status_erddap.json)](https://argopy.statuspage.io/)
 
-Check is performed every 5 mins and results stored in json files (date of files above reflect the time since API status did not changed).
+[![Argovis status](https://img.shields.io/endpoint?label=src%3D%27argovis%27&style=for-the-badge&url=https://raw.githubusercontent.com/euroargodev/argopy-status/master/argopy_api_status_argovis.json)](https://argopy.statuspage.io/)
 
-These json files can be used with [img.shields.io endpoints](https://shields.io/endpoint).
+Check is performed approximately every 5 mins and results stored in json files.
+
+Date of files above reflect the time since API status did not changed.
 
 **You can also check and subscribe to monitoring results at https://argopy.statuspage.io**
+
+Other possible monitoring page: https://stats.uptimerobot.com/n8zoRtGnwl
 
 Markdown to insert default badges:
 
