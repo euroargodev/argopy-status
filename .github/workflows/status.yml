@@ -37,7 +37,7 @@ jobs:
         python -m pip install --upgrade pip
         pwd
         ls -l
-        pip install --use-feature=2020-resolver distributed
+        pip install --use-feature=2020-resolver distributed aiohttp
         pip install --use-feature=2020-resolver git+https://github.com/euroargodev/argopy.git@master
 
     - name: Check API status
