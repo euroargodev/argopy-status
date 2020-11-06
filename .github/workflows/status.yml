@@ -81,7 +81,7 @@ jobs:
         server_port: 587
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
-        subject: $ARGOVIS
+        subject: ${{env.ARGOVIS}}
         body: Build job of ${{github.repository}} completed successfully!
         to: ${{secrets.STATUSPAGE_ARGOVIS_EMAIL}}
         from: argo-bot
