@@ -43,9 +43,13 @@ jobs:
     - name: Check API status
       run: |
         python check_save_status.py
-        echo ::set-env name=ARGOVIS::$(cat ARGOVIS)
-        echo ::set-env name=ERDDAP::$(cat ERDDAP)
-
+        echo 'ARGOVIS<<EOF' >> $GITHUB_ENV
+        cat ARGOVIS >> $GITHUB_ENV
+        echo 'EOF' >> $GITHUB_ENV
+        echo 'ERDDAP<<EOF' >> $GITHUB_ENV
+        cat ERDDAP >> $GITHUB_ENV
+        echo 'EOF' >> $GITHUB_ENV     
+       
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
       with:
