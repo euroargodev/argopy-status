@@ -43,7 +43,6 @@ def skip_this_api(out_dir, colors, api):
     outfile = os.path.join(out_dir, 'argopy_api_status_%s.json' % api)
     with open(outfile, 'w') as f:
         json.dump(data, f)
-        flist.append(outfile)
 
     # Create text file with status:
     outfile = os.path.join(out_dir, '%s.txt' % api.upper())
