@@ -47,11 +47,11 @@ jobs:
 
     - name: Set env value for ARGOVIS
       run: |
-        echo "ARGOVIS=$(cat ARGOVIS)" >> $GITHUB_ENV
+        echo "ARGOVIS=$(cat ARGOVIS.txt)" >> $GITHUB_ENV
 
     - name: Set env value for ERDDAP
       run: |
-        echo "ERDDAP=$(cat ERDDAP)" >> $GITHUB_ENV
+        echo "ERDDAP=$(cat ERDDAP.txt)" >> $GITHUB_ENV
        
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
