@@ -52,7 +52,6 @@ jobs:
     - name: Set env value for ERDDAP
       run: |
         echo "ERDDAP=$(cat ERDDAP)" >> $GITHUB_ENV
-
        
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
@@ -94,7 +93,7 @@ jobs:
         server_port: 587
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
-        subject: $ERDDAP
+        subject: ${{env.ERDDAP}}
         body: Build job of ${{github.repository}} completed successfully!
         to: ${{secrets.STATUSPAGE_ERDDAP_EMAIL}}
         from: argo-bot
