@@ -193,3 +193,4 @@ fabric.properties
 .vscode/
 .pytest_cache
 knotebooks/
+ARGOVIS.txt
