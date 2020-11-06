@@ -37,7 +37,6 @@ def save_api_status(out_dir: str = '.'):
             # Create text file with status:
             with open(api.upper(), 'w') as f:
                 f.write(status.upper())
-            os.environ[api.upper()] = status.upper()
 
     return flist
 
@@ -64,9 +63,9 @@ def save_unknown_status(out_dir: str = '.'):
             flist.append(outfile)
 
         # Create text file with status:
-        with open(api.upper(), 'w') as f:
+        outfile = os.path.join(out_dir, '%s.txt' % api.upper())
+        with open(outfile, 'w') as f:
             f.write(status.upper())
-        os.environ[api.upper()] = status.upper()
 
     return flist
 
