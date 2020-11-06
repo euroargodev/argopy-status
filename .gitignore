@@ -1,5 +1,7 @@
 ARGOVIS
 ERDDAP
+ARGOVIS.txt
+ERDDAP.txt
 *.json
 last_update.txt
 
