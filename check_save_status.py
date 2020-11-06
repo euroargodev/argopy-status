@@ -4,11 +4,9 @@ import json
 try:
     from argopy.utilities import isAPIconnected, list_available_data_src
     do_save = True
-except:
+except ModuleNotFoundError:
     do_save = False
-    import warnings
-    warnings.warn("argopy could not be loaded properly.\n We failed to check web API status !")
-# do_save = False
+    print("argopy could not be loaded properly.\n We failed to check web API status !")
 
 
 def save_api_status(out_dir: str = '.'):
@@ -35,7 +33,8 @@ def save_api_status(out_dir: str = '.'):
                 flist.append(outfile)
 
             # Create text file with status:
-            with open(api.upper(), 'w') as f:
+            outfile = os.path.join(out_dir, '%s.txt' % api.upper())
+            with open(outfile, 'w') as f:
                 f.write(status.upper())
 
     return flist
@@ -71,6 +70,7 @@ def save_unknown_status(out_dir: str = '.'):
 
 
 if __name__ == '__main__':
+    print("do_save:", do_save)
     if do_save:
         save_api_status('.')
     else:
