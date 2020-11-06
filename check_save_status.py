@@ -8,6 +8,8 @@ except:
     do_save = False
     import warnings
     warnings.warn("argopy could not be loaded properly.\n We failed to check web API status !")
+# do_save = False
+
 
 def save_api_status(out_dir: str = '.'):
     colors = {'up': 'green', 'down': 'red'}
@@ -46,6 +48,7 @@ def save_unknown_status(out_dir: str = '.'):
     for api in ['erddap', 'argovis']:
         label = "Data source '%s'" % api
         status = 'unknown'
+        print(label)
 
         # Create json file with full results for badge:
         color = colors[status]
