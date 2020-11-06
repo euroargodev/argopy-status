@@ -47,9 +47,10 @@ jobs:
 
     - name: Set env value for ARGOVIS
       run: |
-        echo 'ARGOVIS<<EOF' >> $GITHUB_ENV
-        cat ARGOVIS >> $GITHUB_ENV
-        echo 'EOF' >> $GITHUB_ENV
+        echo "ARGOVIS=UP" >> $GITHUB_ENV
+#        echo 'ARGOVIS<<EOF' >> $GITHUB_ENV
+#        cat ARGOVIS >> $GITHUB_ENV
+#        echo 'EOF' >> $GITHUB_ENV
 
     - name: Set env value for ERDDAP
       run: |
