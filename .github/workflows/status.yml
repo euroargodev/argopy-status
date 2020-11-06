@@ -48,9 +48,6 @@ jobs:
     - name: Set env value for ARGOVIS
       run: |
         echo "ARGOVIS=$(cat ARGOVIS)" >> $GITHUB_ENV
-#        echo 'ARGOVIS<<EOF' >> $GITHUB_ENV
-#        cat ARGOVIS >> $GITHUB_ENV
-#        echo 'EOF' >> $GITHUB_ENV
 
     - name: Set env value for ERDDAP
       run: |
@@ -77,19 +74,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Send ERDDAP status by email
-      uses: dawidd6/action-send-mail@v2
-      with:
-        server_address: smtp.gmail.com
-        server_port: 587
-        username: ${{secrets.MAIL_USERNAME}}
-        password: ${{secrets.MAIL_PASSWORD}}
-        subject: ${{env.ERDDAP}}
-        body: Build job of ${{github.repository}} completed successfully!
-        to: ${{secrets.STATUSPAGE_ERDDAP_EMAIL}}
-        from: argo-bot
-        content_type: text/html
-
     - name: Send ARGOVIS status by email
       uses: dawidd6/action-send-mail@v2
       with:
@@ -97,8 +81,21 @@ jobs:
         server_port: 587
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
-        subject: ${{env.ARGOVIS}}
+        subject: ${{GITHUB_ENV.ARGOVIS}}
         body: Build job of ${{github.repository}} completed successfully!
         to: ${{secrets.STATUSPAGE_ARGOVIS_EMAIL}}
+        from: argo-bot
+        content_type: text/html
+
+    - name: Send ERDDAP status by email
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: ${{secrets.MAIL_USERNAME}}
+        password: ${{secrets.MAIL_PASSWORD}}
+        subject: ${{GITHUB_ENV.ERDDAP}}
+        body: Build job of ${{github.repository}} completed successfully!
+        to: ${{secrets.STATUSPAGE_ERDDAP_EMAIL}}
         from: argo-bot
         content_type: text/html
