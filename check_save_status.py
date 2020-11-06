@@ -71,7 +71,7 @@ def save_unknown_status(out_dir: str = '.'):
 
 
 if __name__ == '__main__':
-    warnings.warn("do_save:", do_save)
+    warnings.warn("do_save: %s " % do_save)
     if do_save:
         flist = save_api_status('.')
     else:
