@@ -1,7 +1,13 @@
 import os
 import json
-from argopy.utilities import isAPIconnected, list_available_data_src
 
+try:
+    from argopy.utilities import isAPIconnected, list_available_data_src
+    do_save = True
+except:
+    do_save = False
+    import warnings
+    warnings.warn("argopy could not be loaded properly.\n We failed to check web API status !")
 
 def save_api_status(out_dir: str = '.'):
     colors = {'up': 'green', 'down': 'red'}
@@ -12,6 +18,8 @@ def save_api_status(out_dir: str = '.'):
             status = 'down'
             if isAPIconnected(src=api, data=1):
                 status = 'up'
+
+            # Create json file with full results for badge:
             color = colors[status]
             message = status
             data = {}
@@ -23,10 +31,45 @@ def save_api_status(out_dir: str = '.'):
             with open(outfile, 'w') as f:
                 json.dump(data, f)
                 flist.append(outfile)
+
+            # Create text file with status:
             with open(api.upper(), 'w') as f:
                 f.write(status.upper())
             os.environ[api.upper()] = status.upper()
+
     return flist
 
+def save_unknown_status(out_dir: str = '.'):
+    # This is a dirty trick when we couldn't load argopy
+    colors = {'unknown': 'black'}
+    flist = []
+    for api in ['erddap', 'argovis']:
+        label = "Data source '%s'" % api
+        status = 'unknown'
+
+        # Create json file with full results for badge:
+        color = colors[status]
+        message = status
+        data = {}
+        data['schemaVersion'] = 1
+        data['label'] = label
+        data['message'] = message
+        data['color'] = color
+        outfile = os.path.join(out_dir, 'argopy_api_status_%s.json' % api)
+        with open(outfile, 'w') as f:
+            json.dump(data, f)
+            flist.append(outfile)
+
+        # Create text file with status:
+        with open(api.upper(), 'w') as f:
+            f.write(status.upper())
+        os.environ[api.upper()] = status.upper()
+
+    return flist
+
+
 if __name__ == '__main__':
-    save_api_status('.')
+    if do_save:
+        save_api_status('.')
+    else:
+        save_unknown_status('.')
