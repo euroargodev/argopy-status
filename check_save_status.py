@@ -1,12 +1,13 @@
 import os
 import json
+import warnings
 
 try:
     from argopy.utilities import isAPIconnected, list_available_data_src
     do_save = True
 except ModuleNotFoundError:
     do_save = False
-    print("argopy could not be loaded properly.\n We failed to check web API status !")
+    warnings.warn("argopy could not be loaded properly.\n We failed to check web API status !")
 
 
 def save_api_status(out_dir: str = '.'):
@@ -46,7 +47,7 @@ def save_unknown_status(out_dir: str = '.'):
     for api in ['erddap', 'argovis']:
         label = "Data source '%s'" % api
         status = 'unknown'
-        print(label)
+        warnings.warn(label)
 
         # Create json file with full results for badge:
         color = colors[status]
@@ -70,8 +71,9 @@ def save_unknown_status(out_dir: str = '.'):
 
 
 if __name__ == '__main__':
-    print("do_save:", do_save)
+    warnings.warn("do_save:", do_save)
     if do_save:
-        save_api_status('.')
+        flist = save_api_status('.')
     else:
-        save_unknown_status('.')
+        flist = save_unknown_status('.')
+    warnings.warn(flist)
