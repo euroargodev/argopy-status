@@ -76,4 +76,4 @@ if __name__ == '__main__':
         flist = save_api_status('.')
     else:
         flist = save_unknown_status('.')
-    warnings.warn(flist)
+    warnings.warn(str(flist))
