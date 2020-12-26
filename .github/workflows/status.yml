@@ -56,8 +56,8 @@ jobs:
     - name: Save API status online
       uses: EndBug/add-and-commit@v4.4.0
       with:
-        author_name: argo-bot
-        author_email: gmaze@ifremer.fr
+        author_name: argobot-hub
+        author_email: argobot84@gmail.com
         message: "Update status files"
         add: "*.json --force"
       env:
@@ -66,8 +66,8 @@ jobs:
     - name: Save report online
       uses: EndBug/add-and-commit@v4.4.0
       with:
-        author_name: argo-bot
-        author_email: gmaze@ifremer.fr
+        author_name: argobot-hub
+        author_email: argobot84@gmail.com
         message: 'Update report file'
         add: "*.txt --force"
       env:
