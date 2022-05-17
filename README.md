@@ -6,7 +6,9 @@
 
 [![Argovis status](https://img.shields.io/endpoint?label=src%3D%27argovis%27&style=for-the-badge&url=https://raw.githubusercontent.com/euroargodev/argopy-status/master/argopy_api_status_argovis.json)](https://argopy.statuspage.io/)
 
-Check is performed approximately every 5 mins and results stored in json files.
+[![GDAC](https://img.shields.io/endpoint?label=src%3D%27gdac%27&style=for-the-badge&url=https://raw.githubusercontent.com/euroargodev/argopy-status/master/argopy_api_status_gdac_ifremer.json)](https://argopy.statuspage.io/)
+
+Check is performed approximately every 5 mins and results stored in json files on this repo.
 
 Date of files above reflect the time since API status did not changed.
 

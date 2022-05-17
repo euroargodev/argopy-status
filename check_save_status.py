@@ -52,7 +52,7 @@ def skip_this_api(out_dir, colors, api):
 
 def save_api_status(out_dir: str = '.'):
     colors = {'up': 'green', 'down': 'red', 'unknown': 'black'}
-    api_expected = ['erddap', 'argovis']
+    api_expected = ['erddap', 'argovis', 'gdac']
     api_available = list_available_data_src()
     for api in api_expected:
         if api in api_available:
