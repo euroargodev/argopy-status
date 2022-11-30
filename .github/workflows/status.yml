@@ -27,10 +27,10 @@ jobs:
     - name: Save report
       run: date +%s > last_update.txt
       
-    - name: Set up Python 3.6
+    - name: Set up Python 3.8
       uses: actions/setup-python@v1
       with:
-        python-version: '3.6'
+        python-version: '3.8'
 
     - name: Install argopy
       run: |
