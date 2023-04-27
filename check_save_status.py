@@ -1,6 +1,6 @@
 import os
 import json
-from argopy.utilities import isAPIconnected, list_available_data_src
+from argopy.utilities import isAPIconnected, list_available_data_src, urlhaskeyword
 
 
 COLORS = {'up': 'green', 'down': 'red', 'unknown': 'black'}
@@ -67,3 +67,6 @@ def save_api_status(out_dir: str = '.'):
 
 if __name__ == '__main__':
     save_api_status('.')
+
+    print("urlhaskeyword('https://erddap.ifremer.fr/erddap/info/ArgoFloats/index.json', 'columnNames')")
+    print(urlhaskeyword('https://erddap.ifremer.fr/erddap/info/ArgoFloats/index.json', 'columnNames'))
