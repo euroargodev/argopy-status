@@ -64,6 +64,7 @@ def save_api_status(out_dir: str = '.'):
         else:
             skip_this_api(out_dir, api_name)
 
+    print('argovis', api_available['argovis'].api_server_check)
 
 if __name__ == '__main__':
     save_api_status('.')
