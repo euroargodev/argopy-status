@@ -26,7 +26,7 @@ def check_this_api(out_dir, api_name, mod):
     print("Checking status for '%s'" % api_name)
 
     if hasattr(mod, 'api_server_check'):
-        print(mod[api_name].api_server_check)
+        print(mod.api_server_check)
 
         label = "Data source '%s'" % api_name
         status = 'down'
