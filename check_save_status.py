@@ -23,7 +23,7 @@ def save_to_txt(status, outfile):
         f.write(status.upper())
 
 def check_this_api(out_dir, api_name, mod):
-    print("Checking status for '%s'" % api_name)
+    print("\nChecking status for '%s'" % api_name)
 
     if hasattr(mod, 'api_server_check'):
         print(mod.api_server_check)
@@ -68,7 +68,7 @@ def save_api_status(out_dir: str = '.'):
 if __name__ == '__main__':
     save_api_status('.')
 
-    print("urlhaskeyword('https://erddap.ifremer.fr/erddap/info/ArgoFloats/index.json', 'columnNames')")
+    print("\nurlhaskeyword('https://erddap.ifremer.fr/erddap/info/ArgoFloats/index.json', 'columnNames')")
     url = 'https://erddap.ifremer.fr/erddap/info/ArgoFloats/index.json'
     keyword = 'columnNames'
     print(urlhaskeyword(url=url, keyword=keyword))
@@ -76,4 +76,5 @@ if __name__ == '__main__':
     with fsspec.open(url) as f:
         data = f.read()
     result = keyword in str(data)
+    print('data retrieved:')
     print(str(data))
