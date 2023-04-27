@@ -1,7 +1,7 @@
 import os
 import json
 from argopy.utilities import isAPIconnected, list_available_data_src, urlhaskeyword
-
+import fsspec
 
 COLORS = {'up': 'green', 'down': 'red', 'unknown': 'black'}
 
@@ -69,4 +69,11 @@ if __name__ == '__main__':
     save_api_status('.')
 
     print("urlhaskeyword('https://erddap.ifremer.fr/erddap/info/ArgoFloats/index.json', 'columnNames')")
-    print(urlhaskeyword('https://erddap.ifremer.fr/erddap/info/ArgoFloats/index.json', 'columnNames'))
+    url = 'https://erddap.ifremer.fr/erddap/info/ArgoFloats/index.json'
+    keyword = 'columnNames'
+    print(urlhaskeyword(url=url, keyword=keyword))
+
+    with fsspec.open(url) as f:
+        data = f.read()
+    result = keyword in str(data)
+    print(str(data))
