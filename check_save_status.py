@@ -26,6 +26,7 @@ def check_this_api(out_dir, api_name, mod):
     print("Checking status for '%s'" % api_name)
 
     if hasattr(mod, 'api_server_check'):
+        print(mod[api_name].api_server_check)
 
         label = "Data source '%s'" % api_name
         status = 'down'
@@ -63,8 +64,6 @@ def save_api_status(out_dir: str = '.'):
             check_this_api(out_dir, api_name, api_available[api_name])
         else:
             skip_this_api(out_dir, api_name)
-
-    print('argovis', api_available['argovis'].api_server_check)
 
 if __name__ == '__main__':
     save_api_status('.')
