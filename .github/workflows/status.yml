@@ -16,14 +16,14 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: 'master'
 #      env:
 #        GIT_TRACE: 1
 #        GIT_CURL_VERBOSE: 1
         
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Save report
       run: date +%s > last_update.txt
       
