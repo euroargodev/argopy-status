@@ -5,7 +5,7 @@ name: api-status
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '*/25 * * * *'
+    - cron:  '*/5 * * * *'
   push:
     branches: [ master ]
   workflow_dispatch: # allows you to trigger the workflow run manually
