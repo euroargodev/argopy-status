@@ -58,7 +58,7 @@ jobs:
         echo "GDAC=$(cat GDAC.txt)" >> $GITHUB_ENV
        
     - name: Save API status online
-      uses: EndBug/add-and-commit@v9.1.3
+      uses: EndBug/add-and-commit@v9.1.4
       with:
         author_name: argobot-hub
         author_email: argobot84@gmail.com
@@ -68,7 +68,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Save report online
-      uses: EndBug/add-and-commit@v9.1.3
+      uses: EndBug/add-and-commit@v9.1.4
       with:
         author_name: argobot-hub
         author_email: argobot84@gmail.com
