@@ -8,6 +8,7 @@ on:
     - cron:  '*/5 * * * *'
   push:
     branches: [ master ]
+  workflow_dispatch: # allows you to trigger the workflow run manually
 
 jobs:
   check-and-report:
