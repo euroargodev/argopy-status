@@ -106,6 +106,7 @@ jobs:
         body: Build job of ${{github.repository}} completed successfully!
         to: ${{secrets.STATUSPAGE_ERDDAP_EMAIL}}
         from: argo-bot
+        ignore_cert: true
 
     - name: Send GDAC status by email
       uses: dawidd6/action-send-mail@v3
@@ -118,3 +119,4 @@ jobs:
         body: Build job of ${{github.repository}} completed successfully!
         to: ${{secrets.STATUSPAGE_GDAC_EMAIL}}
         from: argo-bot
+        ignore_cert: true
