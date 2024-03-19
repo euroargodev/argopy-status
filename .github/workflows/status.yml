@@ -78,9 +78,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Fix self-signed error
-      run: |
-        echo "NODE_TLS_REJECT_UNAUTHORIZED='0'" >> $GITHUB_ENV
+#    - name: Fix self-signed error
+#      run: |
+#        echo "NODE_TLS_REJECT_UNAUTHORIZED='0'" >> $GITHUB_ENV
 
     - name: Send ARGOVIS status by email
       uses: dawidd6/action-send-mail@v3
@@ -93,6 +93,7 @@ jobs:
         body: Build job of ${{github.repository}} completed successfully!
         to: ${{secrets.STATUSPAGE_ARGOVIS_EMAIL}}
         from: argo-bot
+        ignore_cert: true
 
     - name: Send ERDDAP status by email
       uses: dawidd6/action-send-mail@v3
