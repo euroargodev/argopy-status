@@ -1,6 +1,6 @@
 import os
 import json
-from argopy.utilities import isAPIconnected, list_available_data_src
+from argopy.utils import isAPIconnected, list_available_data_src
 
 
 COLORS = {'up': 'green', 'down': 'red', 'unknown': 'black'}
@@ -21,6 +21,7 @@ def save_to_txt(status, outfile):
     # Create text file with status
     with open(outfile, 'w') as f:
         f.write(status.upper())
+
 
 def check_this_api(out_dir, api_name, mod):
     print("\nChecking status for '%s'" % api_name)
@@ -64,6 +65,7 @@ def save_api_status(out_dir: str = '.'):
             check_this_api(out_dir, api_name, api_available[api_name])
         else:
             skip_this_api(out_dir, api_name)
+
 
 if __name__ == '__main__':
     save_api_status('.')
