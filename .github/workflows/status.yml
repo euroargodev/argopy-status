@@ -77,6 +77,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Fix self-signed error
+      run: |
+        export NODE_TLS_REJECT_UNAUTHORIZED="0"
+
     - name: Send ARGOVIS status by email
       uses: dawidd6/action-send-mail@v3
       with:
