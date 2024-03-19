@@ -5,7 +5,7 @@ name: api-status
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '*/5 * * * *'
+    - cron:  '*/25 * * * *'
   push:
     branches: [ master ]
   workflow_dispatch: # allows you to trigger the workflow run manually
@@ -80,7 +80,7 @@ jobs:
 
     - name: Fix self-signed error
       run: |
-        export NODE_TLS_REJECT_UNAUTHORIZED="0"
+        echo "NODE_TLS_REJECT_UNAUTHORIZED='0'" >> $GITHUB_ENV
 
     - name: Send ARGOVIS status by email
       uses: dawidd6/action-send-mail@v3
