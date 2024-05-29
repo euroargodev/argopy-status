@@ -16,6 +16,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Energy Estimation - Initialize
+      uses: green-coding-berlin/eco-ci-energy-estimation@v3
+      with:
+        task: start-measurement
+        company-uuid: ${{ secrets.CARBONDB_COMPANY_UUID }}
+        project-uuid: ${{ secrets.CARBONDB_PROJECT_UUID }}
+      continue-on-error: true
+
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
@@ -120,3 +128,20 @@ jobs:
         to: ${{secrets.STATUSPAGE_GDAC_EMAIL}}
         from: argo-bot
         ignore_cert: true
+
+    - name: Energy Estimation - Get Measurement
+      uses: green-coding-berlin/eco-ci-energy-estimation@v3
+      with:
+        task: get-measurement
+        label: 'argopy API status'
+        company-uuid: ${{ secrets.CARBONDB_COMPANY_UUID }}
+        project-uuid: ${{ secrets.CARBONDB_PROJECT_UUID }}
+      continue-on-error: true
+
+    - name: Energy Estimation - Show Results
+      uses: green-coding-berlin/eco-ci-energy-estimation@v3
+      with:
+        task: display-results
+        company-uuid: ${{ secrets.CARBONDB_COMPANY_UUID }}
+        project-uuid: ${{ secrets.CARBONDB_PROJECT_UUID }}
+      continue-on-error: true
