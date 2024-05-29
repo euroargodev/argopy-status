@@ -133,7 +133,7 @@ jobs:
       uses: green-coding-berlin/eco-ci-energy-estimation@v3
       with:
         task: get-measurement
-        label: 'argopy API status'
+        label: 'argopy APIstatus'
         company-uuid: ${{ secrets.CARBONDB_COMPANY_UUID }}
         project-uuid: ${{ secrets.CARBONDB_PROJECT_UUID }}
       continue-on-error: true
