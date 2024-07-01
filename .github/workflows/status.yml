@@ -21,11 +21,12 @@ jobs:
 
     steps:
     - name: Energy Estimation - Initialize
-      uses: green-coding-berlin/eco-ci-energy-estimation@v3
+      uses: green-coding-solutions/eco-ci-energy-estimation@v4.0-rc3
       with:
         task: start-measurement
         company-uuid: ${{ secrets.CARBONDB_COMPANY_UUID }}
         project-uuid: ${{ secrets.CARBONDB_PROJECT_UUID }}
+        machine-uuid: ${{ secrets.CARBONDB_MACHINE_UUID }}
       continue-on-error: true
 
     - name: Checkout repository
@@ -134,18 +135,16 @@ jobs:
         ignore_cert: true
 
     - name: Energy Estimation - Get Measurement
-      uses: green-coding-berlin/eco-ci-energy-estimation@v3
+      uses: green-coding-solutions/eco-ci-energy-estimation@v4.0-rc3
       with:
         task: get-measurement
         label: 'argopy APIstatus'
-        company-uuid: ${{ secrets.CARBONDB_COMPANY_UUID }}
-        project-uuid: ${{ secrets.CARBONDB_PROJECT_UUID }}
       continue-on-error: true
 
     - name: Energy Estimation - Show Results
-      uses: green-coding-berlin/eco-ci-energy-estimation@v3
+      uses: green-coding-solutions/eco-ci-energy-estimation@v4.0-rc3
       with:
         task: display-results
-        company-uuid: ${{ secrets.CARBONDB_COMPANY_UUID }}
-        project-uuid: ${{ secrets.CARBONDB_PROJECT_UUID }}
+        pr-comment: false
+        send-data: true
       continue-on-error: true
