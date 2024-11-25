@@ -96,7 +96,7 @@ jobs:
 #        echo "NODE_TLS_REJECT_UNAUTHORIZED='0'" >> $GITHUB_ENV
 
     - name: Send ARGOVIS status by email
-      uses: dawidd6/action-send-mail@v3
+      uses: dawidd6/action-send-mail@v4
       with:
         server_address: smtp.gmail.com
         server_port: 587
@@ -109,7 +109,7 @@ jobs:
         ignore_cert: true
 
     - name: Send ERDDAP status by email
-      uses: dawidd6/action-send-mail@v3
+      uses: dawidd6/action-send-mail@v4
       with:
         server_address: smtp.gmail.com
         server_port: 587
@@ -122,7 +122,7 @@ jobs:
         ignore_cert: true
 
     - name: Send GDAC status by email
-      uses: dawidd6/action-send-mail@v3
+      uses: dawidd6/action-send-mail@v4
       with:
         server_address: smtp.gmail.com
         server_port: 587
