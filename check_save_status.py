@@ -74,7 +74,7 @@ def check_carbonfootprint(out_dir: str = "."):
     ArgopyCarbon.shieldsio_endpoint(
         value,
         label="Total carbon emitted since last release",
-        outfile=Path(out_dir).join("argopy_carbonfootprint_since_last_release.json"),
+        outfile=Path(out_dir).joinpath("argopy_carbonfootprint_since_last_release.json"),
     )
 
 
