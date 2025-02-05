@@ -29,7 +29,10 @@ Markdown to insert default badges:
 
 [![CI Energy][ci-energy-badge]][ci-energy-link]
 
+<a href="#"><img src="https://api.green-coding.io/v1/ci/badge/get?repo=euroargodev/argopy-status&amp;branch=master&amp;workflow=2724029&amp;mode=totals&amp;metric=carbon&amp;duration_days=30"></a>
+
 [More details on the Green-coding page here][ci-energy-link]
 
-[ci-energy-badge]: https://api.green-coding.berlin/v1/ci/badge/get?repo=euroargodev/argopy-status&branch=master&workflow=2724029
+[ci-energy-badge]: https://api.green-coding.io/v1/ci/badge/get?repo=euroargodev/argopy-status&branch=master&workflow=2724029&metric=carbon
+[ci-energy-badge-30]: https://api.green-coding.io/v1/ci/badge/get?repo=euroargodev/argopy-status&branch=master&workflow=2724029&metric=carbon&mode=total&duration_days=30
 [ci-energy-link]: https://metrics.green-coding.io/ci.html?repo=euroargodev/argopy-status&branch=master&workflow=2724029
