@@ -5,43 +5,43 @@ from pathlib import Path
 from argopy.utils import isAPIconnected, list_available_data_src, ArgopyCarbon
 
 
-COLORS = {'up': 'green', 'down': 'red', 'unknown': 'black'}
+COLORS = {"up": "green", "down": "red", "unknown": "black"}
 
 
 def save_to_json(label, message, color, outfile):
     # Create json file with full results for a shieldio badge
     data = {}
-    data['schemaVersion'] = 1
-    data['label'] = label
-    data['message'] = message
-    data['color'] = color
-    with open(outfile, 'w') as f:
+    data["schemaVersion"] = 1
+    data["label"] = label
+    data["message"] = message
+    data["color"] = color
+    with open(outfile, "w") as f:
         json.dump(data, f)
 
 
 def save_to_txt(status, outfile):
     # Create text file with status
-    with open(outfile, 'w') as f:
+    with open(outfile, "w") as f:
         f.write(status.upper())
 
 
 def check_this_api(out_dir, api_name, mod):
     print("\nChecking status for '%s'" % api_name)
 
-    if hasattr(mod, 'api_server_check'):
+    if hasattr(mod, "api_server_check"):
         print(mod.api_server_check)
 
         label = "Data source '%s'" % api_name
-        status = 'down'
+        status = "down"
         if isAPIconnected(src=api_name, data=1):
-            status = 'up'
+            status = "up"
 
         print("status='%s'" % status)
 
-        outfile = os.path.join(out_dir, 'argopy_api_status_%s.json' % api_name)
+        outfile = os.path.join(out_dir, "argopy_api_status_%s.json" % api_name)
         save_to_json(label, status, COLORS[status], outfile)
 
-        outfile = os.path.join(out_dir, '%s.txt' % api_name.upper())
+        outfile = os.path.join(out_dir, "%s.txt" % api_name.upper())
         save_to_txt(status, outfile)
 
     else:
@@ -50,17 +50,17 @@ def check_this_api(out_dir, api_name, mod):
 
 def skip_this_api(out_dir, api_name):
     label = "Data source '%s'" % api_name
-    status = 'unknown'
+    status = "unknown"
 
-    outfile = os.path.join(out_dir, 'argopy_api_status_%s.json' % api_name)
+    outfile = os.path.join(out_dir, "argopy_api_status_%s.json" % api_name)
     save_to_json(label, status, COLORS[status], outfile)
 
-    outfile = os.path.join(out_dir, '%s.txt' % api_name.upper())
+    outfile = os.path.join(out_dir, "%s.txt" % api_name.upper())
     save_to_txt(status, outfile)
 
 
-def save_api_status(out_dir: str = '.'):
-    api_expected = ['erddap', 'argovis', 'gdac']
+def save_api_status(out_dir: str = "."):
+    api_expected = ["erddap", "argovis", "gdac"]
     api_available = list_available_data_src()
     for api_name in api_expected:
         if api_name in api_available:
@@ -69,19 +69,15 @@ def save_api_status(out_dir: str = '.'):
             skip_this_api(out_dir, api_name)
 
 
-def check_carbonfootprint(out_dir: str = '.'):
-    value = ArgopyCarbon().footprint_since_last_release(errors='ignore')
-    ArgopyCarbon().shieldsio_endpoint(value,
-                                      label='Total carbon emitted since last release',
-                                      outfile=Path(out_dir).join("argopy_carbonfootprint_since_last_release.json"))
+def check_carbonfootprint(out_dir: str = "."):
+    value = ArgopyCarbon().footprint_since_last_release(errors="ignore")
+    ArgopyCarbon.shieldsio_endpoint(
+        value,
+        label="Total carbon emitted since last release",
+        outfile=Path(out_dir).join("argopy_carbonfootprint_since_last_release.json"),
+    )
 
 
-
-if __name__ == '__main__':
-    save_api_status('.')
-
-    try:
-        check_carbonfootprint(".")
-    except:
-        print("Cannot determine how much carbon was emitted since last release")
-        pass
+if __name__ == "__main__":
+    save_api_status(".")
+    check_carbonfootprint(".")
