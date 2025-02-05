@@ -48,7 +48,7 @@ jobs:
         pwd
         ls -l
         pip install distributed aiohttp requests
-        pip install git+https://github.com/euroargodev/argopy.git@master
+        pip install git+https://github.com/euroargodev/argopy.git@carbonfootprint
 
     - name: Check API status
       run: |
@@ -85,9 +85,6 @@ jobs:
         add: "*.txt --force"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#    - name: Fix self-signed error
-#      run: |
-#        echo "NODE_TLS_REJECT_UNAUTHORIZED='0'" >> $GITHUB_ENV
     - name: Send ARGOVIS status by email
       uses: dawidd6/action-send-mail@v3
       with:
