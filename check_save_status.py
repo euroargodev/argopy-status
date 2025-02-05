@@ -2,7 +2,7 @@ import os
 import json
 from pathlib import Path
 
-from argopy.utils import isAPIconnected, list_available_data_src, ArgopyCarbon
+from argopy.utils import isAPIconnected, list_available_data_src, GreenCoding
 
 
 COLORS = {"up": "green", "down": "red", "unknown": "black"}
@@ -69,15 +69,15 @@ def save_api_status(out_dir: str = "."):
             skip_this_api(out_dir, api_name)
 
 
-def check_carbonfootprint(out_dir: str = "."):
-    value = ArgopyCarbon().footprint_since_last_release(errors="ignore")
-    ArgopyCarbon.shieldsio_endpoint(
+def save_carbonfootprint(out_dir: str = "."):
+    value = GreenCoding().footprint_since_last_release(errors="ignore")
+    GreenCoding.shieldsio_endpoint(
         value,
-        label="Total carbon emitted since last release",
+        label="Total carbon emitted since last release [[gCO2eq]",
         outfile=Path(out_dir).joinpath("argopy_carbonfootprint_since_last_release.json"),
     )
 
 
 if __name__ == "__main__":
     save_api_status(".")
-    check_carbonfootprint(".")
+    save_carbonfootprint(".")
