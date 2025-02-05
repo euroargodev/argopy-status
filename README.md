@@ -29,9 +29,9 @@ Markdown to insert default badges:
 
 ## Continuous Integration tests of argopy
 
-Since the last argopy release, the execution of unit tests on Github Actions for all merged PRs so far is evaluated as:
+The execution of unit tests on Github Actions for all merged PRs since the last argopy release is evaluated as:
 
-![CarbonFootprint](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/euroargodev/argopy-status/master/argopy_carbonfootprint_since_last_release.json)
+![CarbonFootprint](https://img.shields.io/endpoint?style=for-the-badge&url=https://raw.githubusercontent.com/euroargodev/argopy-status/master/argopy_carbonfootprint_since_last_release.json)
 
 
 ## API status monitoring
