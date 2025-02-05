@@ -82,3 +82,6 @@ if __name__ == '__main__':
 
     try:
         check_carbonfootprint(".")
+    except:
+        print("Cannot determine how much carbon was emitted since last release")
+        pass
