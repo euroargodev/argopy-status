@@ -73,7 +73,7 @@ def save_carbonfootprint(out_dir: str = "."):
     value = GreenCoding().footprint_since_last_release(errors="ignore")
     GreenCoding.shieldsio_endpoint(
         value,
-        label="Total carbon emitted since last release [[gCO2eq]",
+        label="Total carbon emitted since last release [gCO2eq]",
         outfile=Path(out_dir).joinpath("argopy_carbonfootprint_since_last_release.json"),
     )
 
