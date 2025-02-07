@@ -48,7 +48,7 @@ jobs:
         pwd
         ls -l
         pip install distributed aiohttp requests
-        pip install git+https://github.com/euroargodev/argopy.git@carbonfootprint
+        pip install git+https://github.com/euroargodev/argopy.git@master
 
     - name: Check API status
       run: |
