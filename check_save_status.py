@@ -70,11 +70,18 @@ def save_api_status(out_dir: str = "."):
 
 
 def save_carbonfootprint(out_dir: str = "."):
-    value = GreenCoding().footprint_since_last_release(errors="ignore")
+    gc = GreenCoding()
+
     GreenCoding.shieldsio_endpoint(
-        value,
-        label="Total carbon emitted since last release [gCO2eq]",
+        gc.footprint_since_last_release(errors="ignore"),
+        label="Upcoming release footprint [gCO2eq]",
         outfile=Path(out_dir).joinpath("argopy_carbonfootprint_since_last_release.json"),
+    )
+
+    GreenCoding.shieldsio_endpoint(
+        gc.footprint_baseline(errors="ignore"),
+        label="Historical baseline footprint [gCO2eq]",
+        outfile=Path(out_dir).joinpath("argopy_carbonfootprint_baseline.json"),
     )
 
 
