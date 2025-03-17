@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 
 from argopy.utils import isAPIconnected, list_available_data_src, GreenCoding
+from argopy.errors import FileNotFoundError
 
 
 COLORS = {"up": "green", "down": "red", "unknown": "black"}
@@ -72,17 +73,22 @@ def save_api_status(out_dir: str = "."):
 def save_carbonfootprint(out_dir: str = "."):
     gc = GreenCoding()
 
-    GreenCoding.shieldsio_endpoint(
-        gc.footprint_since_last_release(errors="ignore"),
-        label="Upcoming release footprint [gCO2eq]",
-        outfile=Path(out_dir).joinpath("argopy_carbonfootprint_since_last_release.json"),
-    )
+    try:
+        GreenCoding.shieldsio_endpoint(
+            gc.footprint_since_last_release(errors="ignore"),
+            label="Upcoming release footprint [gCO2eq]",
+            outfile=Path(out_dir).joinpath("argopy_carbonfootprint_since_last_release.json"),
+        )
 
-    GreenCoding.shieldsio_endpoint(
-        gc.footprint_baseline(errors="ignore"),
-        label="Historical baseline footprint [gCO2eq]",
-        outfile=Path(out_dir).joinpath("argopy_carbonfootprint_baseline.json"),
-    )
+        GreenCoding.shieldsio_endpoint(
+            gc.footprint_baseline(errors="ignore"),
+            label="Historical baseline footprint [gCO2eq]",
+            outfile=Path(out_dir).joinpath("argopy_carbonfootprint_baseline.json"),
+        )
+    except FileNotFoundError:
+        # This is probably because we hit a:
+        # Error: 403, message='rate limit exceeded'
+        warnings.warn("Can't update carbon footprint, probably because of a 'rate limit exceeded' with the Github API")
 
 
 if __name__ == "__main__":
