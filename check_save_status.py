@@ -3,7 +3,6 @@ import json
 from pathlib import Path
 
 from argopy.utils import isAPIconnected, list_available_data_src, GreenCoding
-from argopy.errors import FileNotFoundError
 
 
 COLORS = {"up": "green", "down": "red", "unknown": "black"}
