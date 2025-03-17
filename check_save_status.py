@@ -70,6 +70,7 @@ def save_api_status(out_dir: str = "."):
 
 
 def save_carbonfootprint(out_dir: str = "."):
+    print("\nChecking carbon footprint")
     gc = GreenCoding()
 
     try:
@@ -84,10 +85,12 @@ def save_carbonfootprint(out_dir: str = "."):
             label="Historical baseline footprint [gCO2eq]",
             outfile=Path(out_dir).joinpath("argopy_carbonfootprint_baseline.json"),
         )
+
+        print("OK")
     except FileNotFoundError:
         # This is probably because we hit a:
         # Error: 403, message='rate limit exceeded'
-        warnings.warn("Can't update carbon footprint, probably because of a 'rate limit exceeded' with the Github API")
+        print("ERROR: Can't update carbon footprint, probably because of a 'rate limit exceeded' with the Github API")
 
 
 if __name__ == "__main__":
