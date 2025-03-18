@@ -87,7 +87,7 @@ def save_carbonfootprint(out_dir: str = "."):
         )
 
         print("OK")
-    except FileNotFoundError:
+    except Exception:
         # This is probably because we hit a:
         # Error: 403, message='rate limit exceeded'
         print("ERROR: Can't update carbon footprint, probably because of a 'rate limit exceeded' with the Github API")
