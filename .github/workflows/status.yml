@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Energy Estimation - Initialize
-      uses: green-coding-solutions/eco-ci-energy-estimation@v4
+      uses: green-coding-solutions/eco-ci-energy-estimation@v5
       with:
         task: start-measurement
         project: ${{ secrets.CARBONDB_PROJECT_UUID }}
@@ -122,13 +122,13 @@ jobs:
         from: argo-bot
         ignore_cert: true
     - name: Energy Estimation - Get Measurement
-      uses: green-coding-solutions/eco-ci-energy-estimation@v4
+      uses: green-coding-solutions/eco-ci-energy-estimation@v5
       with:
         task: get-measurement
         label: 'argopy APIstatus'
       continue-on-error: true
     - name: Energy Estimation - Show Results
-      uses: green-coding-solutions/eco-ci-energy-estimation@v4
+      uses: green-coding-solutions/eco-ci-energy-estimation@v5
       with:
         task: display-results
       continue-on-error: true
