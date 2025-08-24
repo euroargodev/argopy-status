@@ -86,7 +86,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Send ARGOVIS status by email
-      uses: dawidd6/action-send-mail@v4
+      uses: dawidd6/action-send-mail@v6
       with:
         server_address: smtp.gmail.com
         server_port: 587
@@ -98,7 +98,7 @@ jobs:
         from: argo-bot
         ignore_cert: true
     - name: Send ERDDAP status by email
-      uses: dawidd6/action-send-mail@v4
+      uses: dawidd6/action-send-mail@v6
       with:
         server_address: smtp.gmail.com
         server_port: 587
@@ -110,7 +110,7 @@ jobs:
         from: argo-bot
         ignore_cert: true
     - name: Send GDAC status by email
-      uses: dawidd6/action-send-mail@v4
+      uses: dawidd6/action-send-mail@v6
       with:
         server_address: smtp.gmail.com
         server_port: 587
