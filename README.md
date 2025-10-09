@@ -25,6 +25,11 @@ Markdown to insert default badges:
 
     ![GDAC status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/euroargodev/argopy-status/master/argopy_api_status_gdac.json)
 
+It is also possible the get [status of web-API used by argopy](https://argopy.statuspage.io/api) through these API endpoints:
+
+- https://lfb0pwb02xcq.statuspage.io/api/v2/summary.json
+- https://lfb0pwb02xcq.statuspage.io/api/v2/status.json
+
 # Energy impact 
 
 ## Continuous Integration tests of argopy
