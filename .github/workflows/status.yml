@@ -30,11 +30,11 @@ jobs:
         send-data: true
       continue-on-error: true
     - name: Checkout repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         ref: 'master'
         
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Save report
       run: date +%s > last_update.txt
       
