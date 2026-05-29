@@ -30,16 +30,16 @@ jobs:
         send-data: true
       continue-on-error: true
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         ref: 'master'
         
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Save report
       run: date +%s > last_update.txt
       
     - name: Set up Python 3.11
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: '3.11'
     - name: Install argopy
@@ -86,7 +86,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Send ARGOVIS status by email
-      uses: dawidd6/action-send-mail@v4
+      uses: dawidd6/action-send-mail@v7
       with:
         server_address: smtp.gmail.com
         server_port: 587
@@ -98,7 +98,7 @@ jobs:
         from: argo-bot
         ignore_cert: true
     - name: Send ERDDAP status by email
-      uses: dawidd6/action-send-mail@v4
+      uses: dawidd6/action-send-mail@v7
       with:
         server_address: smtp.gmail.com
         server_port: 587
@@ -110,7 +110,7 @@ jobs:
         from: argo-bot
         ignore_cert: true
     - name: Send GDAC status by email
-      uses: dawidd6/action-send-mail@v4
+      uses: dawidd6/action-send-mail@v7
       with:
         server_address: smtp.gmail.com
         server_port: 587
