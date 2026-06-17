@@ -95,7 +95,7 @@ jobs:
         subject: ${{env.ARGOVIS}}
         body: Build job of ${{github.repository}} completed successfully!
         to: ${{secrets.STATUSPAGE_ARGOVIS_EMAIL}}
-        from: argo-bot
+        from: argo-bot <argobot84@gmail.com>
         ignore_cert: true
     - name: Send ERDDAP status by email
       uses: dawidd6/action-send-mail@v7
@@ -107,7 +107,7 @@ jobs:
         subject: ${{env.ERDDAP}}
         body: Build job of ${{github.repository}} completed successfully!
         to: ${{secrets.STATUSPAGE_ERDDAP_EMAIL}}
-        from: argo-bot
+        from: argo-bot <argobot84@gmail.com>
         ignore_cert: true
     - name: Send GDAC status by email
       uses: dawidd6/action-send-mail@v7
@@ -119,7 +119,7 @@ jobs:
         subject: ${{env.GDAC}}
         body: Build job of ${{github.repository}} completed successfully!
         to: ${{secrets.STATUSPAGE_GDAC_EMAIL}}
-        from: argo-bot
+        from: argo-bot <argobot84@gmail.com>
         ignore_cert: true
     - name: Energy Estimation - Get Measurement
       uses: green-coding-solutions/eco-ci-energy-estimation@v5
