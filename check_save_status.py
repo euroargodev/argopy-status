@@ -2,7 +2,7 @@ import os
 import json
 from pathlib import Path
 
-from argopy.utils import isAPIconnected, list_available_data_src, GreenCoding
+from argopy.utils import isAPIconnected, GreenCoding
 
 
 COLORS = {"up": "green", "down": "red", "unknown": "black"}
@@ -60,12 +60,18 @@ def skip_this_api(out_dir, api_name):
 
 
 def save_api_status(out_dir: str = "."):
-    api_expected = ["erddap", "argovis", "gdac"]
-    api_available = list_available_data_src()
+    api_expected = ["erddap", "gdac"]
     for api_name in api_expected:
-        if api_name in api_available:
-            check_this_api(out_dir, api_name, api_available[api_name])
-        else:
+        if api_name == 'erddap':
+            from argopy.data_fetchers import erddap_data as Fetcher
+        elif api_name == 'gdac':
+            from argopy.data_fetchers import gdac_data as Fetcher
+        elif api_name == 'argovis':
+            from argopy.data_fetchers import argovis_data as Fetcher
+
+        try:
+            check_this_api(out_dir, api_name, Fetcher)
+        except:
             skip_this_api(out_dir, api_name)
 
 
