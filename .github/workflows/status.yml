@@ -48,7 +48,7 @@ jobs:
         pwd
         ls -l
         pip install git+https://github.com/euroargodev/argopy.git@master
-        pip install distributed decorator
+        pip install distributed
 
     - name: Check API status
       run: |
