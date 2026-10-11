@@ -47,8 +47,8 @@ jobs:
         python -m pip install --upgrade pip
         pwd
         ls -l
-        pip install distributed aiohttp requests
         pip install git+https://github.com/euroargodev/argopy.git@master
+        pip install distributed decorator
 
     - name: Check API status
       run: |
